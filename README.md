@@ -14,7 +14,9 @@ This component has been tested on a server that runs Ubuntu 14.04 and has the fo
 
 1. [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/)
 2. OpenNetMon - included in this directory and requires the [PoX controller](https://github.com/noxrepo/pox)
-3. 
+3. [R for Ubuntu](https://cran.r-project.org/bin/linux/ubuntu/README.html)
+4. [Forecast package in R](https://cran.r-project.org/web/packages/forecast/forecast.pdf)
+5. [rpy2](https://rpy2.readthedocs.io/en/version_2.8.x/) - This is the python library used to invoke R functions like ARIMA from Python.
 
 ## Orchestration - Run experiments on CloudLab testbed
 
