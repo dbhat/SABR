@@ -62,3 +62,6 @@ This component has been tested on a server that runs Ubuntu 14.04 and has the fo
 3. Cache hit-rates can be computed using the script, <i>cdf_hitratio_qual.py</i>. The current example contains parsing script for BOLAO for the Quality-based caching case. You will need to replace this with other content placement result folders for the Global and Local caching cases.
 4. Total content requests per quality can be obtained using the script, <i>cdf_hitratio_qual.py</i>, for BOLAO and SQUAD for the Quality-based caching case. You will need to replace this with other content placement result folders for the Global and Local caching cases.
 ## D. MATLAB - plotting scripts
+1. The script, <i>caching_CDF_SQUAD.m</i>, is used to plot CDF and CCDF curves for the 4 QoE metrics, Average Quality Bitrate, Number of quality switches, Spectrum and Rebuffering Ratio for all client algorithms. The same script is modified to generate results for the various content placement algorithms for Baseline, Local, Global and Quality-based caching.
+2. The script, <i>stacked_requests.m</i>, is used to create a stacked bar graph for the total number of hits for the 5 quality representations for all content placement strategies.
+
