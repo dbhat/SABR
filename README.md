@@ -20,9 +20,15 @@ This component has been tested on a server that runs Ubuntu 14.04 and has the fo
 
 ### Prepare environment and run
 1. You will need to setup 3 tables in a MongoDB database; portmonitor, serv_bandwidth, cachemiss where portmonitor will be used to archive network port statistics on active downstream paths, serv_bandwidth is used to store the processed ARIMA forecasts along with cache status and cachemiss is used to archive the incoming cache misses to be used for content placement for various strategies, respectively. For portmonitor and serv_bandwidth tables, you may need to set the maximum size limit using capped collections as specified [here.](https://docs.mongodb.com/manual/core/capped-collections/) For the cachemiss table, it is mandatory to enable capped collections in order for the caching functionality to work. 
-2. Run the controller
+[Note:] It is reccommended to run the following processes inside individual [screen](https://www.gnu.org/software/screen/manual/screen.html) processes
+2. Run the controller using the following command:
+   
+      `./pox.py openflow.of_01 --port=<controller_port> log --file=<log_file>,w opennetmon.startup`
 3. Run ARIMA forecast and cache status collection module
-4. Run the caching component - For the initial setup of the empty caches, this script must be run only after the orchestration of the testbed experiments has started.
+   a. Copy arima.py to ext folder inside the PoX directory and issue the following command: 
+      
+      `./pox.py openflow.of_01 --port=<port_number> log --file=<log_file>,w arima`
+4. Run the caching component - For the initial setup of the empty caches, the command, `python cacher.py`, must be run only after the orchestration of the testbed experiments has started.
 
 ## B. Orchestration - Run experiments on CloudLab testbed.
 1. Setup Switches - Create OVS bridges and connect to the controller IP above. The script, <i>automate_sabr_clab.py</i>, can be updated to remotely execute on switches if desired.
