@@ -26,13 +26,29 @@ This component has been tested on a server that runs Ubuntu 14.04 and has the fo
 
 ## B. Orchestration - Run experiments on CloudLab testbed.
 1. Setup Switches - Create OVS bridges and connect to the controller IP above. The script, <i>automate_sabr_clab.py</i>, can be updated to remotely execute on switches if desired.
-2. The script, <i>automate_sabr_clab.py</i> maybe used to automate experiment runs on CloudLab using remote login capability provided by the Python-based [Paramiko](http://www.paramiko.org/) library. The script mainly does the following:
+2. Setup Server 
+    * The following dependencies must be installed:
+      * screen apache2 python-pip python-dev build-essential libssl-dev libffi-dev mongodb
+      * Python libraries: pymongo scapy scapy_http netifaces
+    [Hint]: Run the following script on the [server](https://github.com/dbhat/cloudlab_SABR/blob/master/server/server.sh)
+    * Insert metadata information into the cache MongoDB using [this script](https://github.com/dbhat/cloudlab_SABR/blob/master/server/create_mpdinfo.py). This script depends on mpd_insert.py and config_dash.py which can be found [here](https://github.com/dbhat/cloudlab_SABR/tree/master/server).
+    * Use [this script](https://github.com/dbhat/cloudlab_SABR/blob/master/server/http_capture.py) to listen to http requests for caching.
+    [Hint]: This script is used to sniff HTPP GET requests and works best inside a screen process by running 
+    `python http_capture.py`
+3. Setup Clients 
+    * The following dependencies must be installed:
+      * python-pip python-dev build-essential vim screen
+      * Python libraries: urllib3 httplib2 pymongo netifaces requests numpy sortedcontainers 
+    * In our evaluation, we modify the player available [here](https://github.com/pari685/AStream.git) to obtain the cache map using a GET request of the following format in a [Pymongo](https://api.mongodb.com/python/current/) client: `table.find({"server_ip": str(index), "client_ip":(str(ni.ifaddresses('eth1')[AF_INET][0]['addr'])[:10])}).sort([("_id", pymongo.DESCENDING)]).limit(1)`; where <i>server_ip</i> is the cache which the client wishes to query and <i>client_ip</i> is the client's own IP address which is required as a filter. The query returns a list of segments and qualities found on the cache along with the available bandwidth obtained from ARIMA processing. 
+    
+    [Note]: You can issue GET requests with Mongo queries with any preferred player of choice since GET requests to MongoDB are widely supported by a range of languages.
+4. The script, <i>automate_sabr_clab.py</i> maybe used to automate experiment runs on CloudLab using remote login capability provided by the Python-based [Paramiko](http://www.paramiko.org/) library. The script mainly does the following:
   
     a. Run client algorithm using AStream
   
     b. Resets MongoDB caches for each run/set of runs
 
-3. To run this script on your machine ensure that:
+5. To run this script on your machine ensure that:
 
     a. The following Python libraries are installed: numpy, scipy, paramiko, pymongo
   
