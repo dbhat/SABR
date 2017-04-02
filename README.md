@@ -7,7 +7,7 @@ In order to experiment with CloudLab, you will need an account for access and a 
 
 The following subsystems are included:
 
-## 1. Controller and SABR
+## A. Controller and SABR
 
 ### Pre-requisites
 This component has been tested on a server that runs Ubuntu 14.04 and has the following dependencies:
@@ -24,8 +24,22 @@ This component has been tested on a server that runs Ubuntu 14.04 and has the fo
 3. Run ARIMA forecast and cache status collection module
 4. Run the caching component - For the initial setup of the empty caches, this script must be run only after the orchestration of the testbed experiments has started.
 
-## 2. Orchestration - Run experiments on CloudLab testbed.
+## B. Orchestration - Run experiments on CloudLab testbed.
+1. Setup Switches
+2. The script, <i>automate_mmsys.py</i> maybe used to automate experiment runs on CloudLab using remote login capability provided by the Python-based [Paramiko](http://www.paramiko.org/) library. The script mainly does the following:
+  
+  a. Run client algorithm using AStream
+  
+  b. Resets MongoDB caches for each run/set of runs
 
-## 3. Parsing - Collect and Analyze Results
+3. To run this script on your machine ensure that:
 
-## 4. MATLAB - plotting scripts
+  a. The following Python libraries are installed: numpy, scipy, paramiko, pymongo
+  
+  b. Copy your SSH keys locally and provide the login credentials in the <i>automate_mmsys.py</i> script.
+  
+  c. Replace the server and client lists with login information in <i>automate_mmsys.py</i>.
+
+## C. Parsing - Collect and Analyze Results
+1. A sample BASH script, is provided to collect the results from the CloudLab client machines
+## D. MATLAB - plotting scripts
