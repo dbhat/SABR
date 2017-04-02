@@ -1,3 +1,6 @@
 [submodule "controllerSABR/SDN-OpenNetMon"]
 	path = controllerSABR/SDN-OpenNetMon
 	url = https://github.com/TUDelftNAS/SDN-OpenNetMon.git
+[submodule "cloudlab_SABR"]
+	path = cloudlab_SABR
+	url = https://github.com/dbhat/cloudlab_SABR.git
