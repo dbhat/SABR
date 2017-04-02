@@ -19,30 +19,11 @@ from pylab import *
 import csv
 from itertools import izip
 import statsmodels.api as sm # recommended import according to the docs
-STARTUP_QUAL=150
-bitrate_array =[]
-time_to_completion = []
-cnt_of_switches = []
-mag_of_switches = []
-bitrate_array2 =[]
-time_to_completion2 = []
-cnt_of_switches2 = []
-mag_of_switches2 = []
-num_of_rebuffers = []
-num_of_rebuffers2 = []
-bitrate_array3 =[]
-time_to_completion3 = []
-cnt_of_switches3 = []
-mag_of_switches3 = []
-num_of_rebuffers3 = []
 VIDEO_DURATION=300.0
 
 bitrates = [89283.0, 262537.0, 791182.0, 2484135.0, 4219897.0]
 cache_list=["10.10.10.4","10.10.10.16","10.10.10.12","10.10.10.27"]
 count=0
-spectrum_array = []
-
-
 c_q1=0.0
 c_q2=0.0
 c_q3=0.0
@@ -70,14 +51,15 @@ num_bola_qual4=[]
 num_bola_qual5=[]
 
 print "Bitrates"
-for name in glob.glob('/Users/dbhat/Documents/opencdn/ACM_MM/CloudLab/10runs_quality_lru_bolao_v*/sabr_bola/server_log*/SERVER_LOG*'):
+for name in glob.glob('<Path_to_results>/10runs_quality_lru_bolao_v*/sabr_bola/server_log*/SERVER_LOG*'):
 	
 	count+=1
 	list_quals=np.genfromtxt(name,delimiter=',', usecols=2, dtype=float)
 
 	list_time=np.genfromtxt(name,delimiter=',', usecols=0, dtype=float)
 	list_serv=np.genfromtxt(name,delimiter=',', usecols=1, dtype="|S11")
-	if len(list_serv)<151:
+    #Obtain logs of incomplete runs
+    if len(list_serv)<151:
 		print name
 	list_quals=list_quals[~np.isnan(list_quals)]
 	sum_q1+=(c_q1+q1)
@@ -146,11 +128,7 @@ for name in glob.glob('/Users/dbhat/Documents/opencdn/ACM_MM/CloudLab/10runs_qua
 				q5+=1
 
 
-
-print count
-
 with open('qual_hitratio_BOLA_glob_qual.csv', 'wb') as f:
     writer = csv.writer(f)
     writer.writerows(izip(bola_qual1,bola_qual2,bola_qual3,bola_qual4,bola_qual5))
-	#writer.write
 

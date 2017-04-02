@@ -19,22 +19,6 @@ from pylab import *
 import csv
 from itertools import izip
 import statsmodels.api as sm # recommended import according to the docs
-STARTUP_QUAL=150
-bitrate_array =[]
-time_to_completion = []
-cnt_of_switches = []
-mag_of_switches = []
-bitrate_array2 =[]
-time_to_completion2 = []
-cnt_of_switches2 = []
-mag_of_switches2 = []
-num_of_rebuffers = []
-num_of_rebuffers2 = []
-bitrate_array3 =[]
-time_to_completion3 = []
-cnt_of_switches3 = []
-mag_of_switches3 = []
-num_of_rebuffers3 = []
 VIDEO_DURATION=300.0
 
 bitrates = [89283.0, 262537.0, 791182.0, 2484135.0, 4219897.0]
@@ -49,7 +33,7 @@ q3=0
 q4=0
 q5=0
 print "Bitrates"
-for name in glob.glob('/Users/dbhat/Documents/opencdn/ACM_MM/CloudLab/10runs_quality_lru_bolao_v*/sabr_bola/server_log*/SERVER_LOG*'):
+for name in glob.glob('<Path_to_results>/10runs_quality_lru_bolao_v*/sabr_bola/server_log*/SERVER_LOG*'):
 
 	count+=1
 	list_quals=np.genfromtxt(name,delimiter=',', usecols=2, dtype=float)
@@ -89,7 +73,7 @@ print sd_avgbr2
 
 count=0
 
-for name in glob.glob('/Users/dbhat/Documents/opencdn/ACM_MM/CloudLab/10runs_quality_lru_squad_v*/sabr_squad/server_log*/SERVER*'):
+for name in glob.glob('<Path_to_results>/10runs_quality_lru_squad_v*/sabr_squad/server_log*/SERVER*'):
 	count+=1
 	list_quals=np.genfromtxt(name,delimiter=',', usecols=3, dtype=float)
 	list_time=np.genfromtxt(name,delimiter=',', usecols=0, dtype=float)
@@ -114,7 +98,7 @@ squad_qual.append(s_q3)
 squad_qual.append(s_q4)
 squad_qual.append(s_q5)
 nparry2 = np.asarray(squad_qual)
-#print nparry2
+
 avg_avgbr2=nparry2.mean()
 sd_avgbr2=np.std(nparry2)
 
@@ -123,6 +107,6 @@ print sd_avgbr2
 with open('qual_dist_BOLA_SQUAD.csv', 'wb') as f:
     writer = csv.writer(f)
     writer.writerows(izip(bola_qual, squad_qual))
-	#writer.write
+
 
 
