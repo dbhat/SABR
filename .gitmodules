@@ -4,3 +4,6 @@
 [submodule "cloudlab_SABR"]
 	path = cloudlab_SABR
 	url = https://github.com/dbhat/cloudlab_SABR.git
+[submodule "AStream"]
+	path = AStream
+	url = https://github.com/pari685/AStream.git
