@@ -63,17 +63,21 @@ def dash_server(ipaddress,run):
     works = ipaddress.strip('\n')+','+user  
     print '[+] '+ works
     if run == 0:
-    	stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus saradump/cachestatus/cache1.bson")
+    	stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus bolaodump/cachestatus/cache1.bson")
     elif run == 1:
-    	stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus sabrdump/cachestatus/cache1.bson")
+    	stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus bolaosabrdump/cachestatus/cache1.bson")
 	elif cl_comm == 2:
     	stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus squaddump/cachestatus/cache1.bson")    	
     elif cl_comm == 3:
-    	stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus squad_sabrdump/cachestatus/cache1.bson")
+    	stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus squadsabrdump/cachestatus/cache1.bson")
     elif cl_comm == 4:
-    	stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus boladump/cachestatus/cache1.bson")
+    	stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus bolaudump/cachestatus/cache1.bson")
     elif cl_comm == 5:
-		stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus sabrboladump/cachestatus/cache1.bson")
+		stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus bolausabrdump/cachestatus/cache1.bson")
+    elif cl_comm == 6:
+        stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus vlcdump/cachestatus/cache1.bson")
+    elif cl_comm == 7:
+        stdin,stdout,stderr=ssh.exec_command("mongorestore --collection cache1 --db cachestatus vlcsabrdump/cachestatus/cache1.bson")
 
     print stdout.read()						
     print stderr.read()
@@ -99,17 +103,21 @@ def dash_client(ipaddress, ports, zipf_index, mpd_ip, cl_comm):
     print '[+] '+ works
     s = zipf_dist[ipaddress][zipf_index]
     if cl_comm == 0:
-    	cl_command = "cd /users/dbhat0/AStream; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p sara > /dev/null &"
+    	cl_command = "cd /users/dbhat0/astream_dash_bolao; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p bola > /dev/null &"
     elif cl_comm == 1:
-    	cl_command = "cd /users/dbhat0/astream_dash_clab; python dist/client/dash_client_cachemap.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p vlc > /users/dbhat0/dash_"+str(ipaddress).replace(".","")+"2>&1"
+    	cl_command = "cd /users/dbhat0/astream_sabr_bolao; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p bola > /users/dbhat0/dash_"+str(ipaddress).replace(".","")+"2>&1"
 	elif cl_comm == 2:
-		cl_command = "cd /users/dbhat0/AStream_SQUAD; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p empirical > /dev/null &"
+		cl_command = "cd /users/dbhat0/astream_dash_squad; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p empirical > /dev/null &"
     elif cl_comm == 3:
-		cl_command = "cd /users/dbhat0/astream_dash_squad; python dist/client/dash_client_cachemap.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p empirical > /users/dbhat0/dash_"+str(ipaddress).replace(".","")+"2>&1"
+		cl_command = "cd /users/dbhat0/astream_sabr_squad; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p empirical > /users/dbhat0/dash_"+str(ipaddress).replace(".","")+"2>&1"
 	elif cl_comm == 4:
-		cl_command = "cd /users/dbhat0/astream_dash_bola; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p bola > /dev/null &"
+		cl_command = "cd /users/dbhat0/astream_dash_bolau; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p bola > /dev/null &"
     elif cl_comm == 5:
-		cl_command = "cd /users/dbhat0/astream_sabr_bola; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p bola > /dev/null &"
+		cl_command = "cd /users/dbhat0/astream_sabr_bolau; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p bola > /dev/null &"
+    elif cl_comm == 6:
+        cl_command = "cd /users/dbhat0/astream_dash_vlc; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p vlc > /dev/null &"
+    elif cl_comm == 7:
+        cl_command = "cd /users/dbhat0/astream_sabr_vlc; python dist/client/dash_client.py -m http://"+str(mpd_ip)+"/BigBuckBunny_2s_mod" + str(int(s)+1) + "/www-itec.uni-klu.ac.at/ftp/datasets/DASHDataset2014/BigBuckBunny/2sec/BigBuckBunny_2s_mod" +str(int(s)+1)+ ".mpd -p vlc > /dev/null &"
 
     stdin,stdout,stderr=ssh.exec_command(cl_command)
     stringout = str(stderr.readlines()) + str(ipaddress) + str(ports)
@@ -120,7 +128,7 @@ def dash_client(ipaddress, ports, zipf_index, mpd_ip, cl_comm):
 
     
 if __name__ == "__main__": 
- for run in range (0,6):
+ for run in range (0,8):
  	for ip in server_ip:	
 		try:
 				client=pymongo.MongoClient(ip)
