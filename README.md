@@ -28,21 +28,21 @@ This component has been tested on a server that runs Ubuntu 14.04 and has the fo
 1. Setup Switches - Create OVS bridges and connect to the controller IP above. The script, <i>automate_sabr_clab.py</i>, can be updated to remotely execute on switches if desired.
 2. The script, <i>automate_sabr_clab.py</i> maybe used to automate experiment runs on CloudLab using remote login capability provided by the Python-based [Paramiko](http://www.paramiko.org/) library. The script mainly does the following:
   
-  a. Run client algorithm using AStream
+    a. Run client algorithm using AStream
   
-  b. Resets MongoDB caches for each run/set of runs
+    b. Resets MongoDB caches for each run/set of runs
 
 3. To run this script on your machine ensure that:
 
-  a. The following Python libraries are installed: numpy, scipy, paramiko, pymongo
+    a. The following Python libraries are installed: numpy, scipy, paramiko, pymongo
   
-  b. Copy your SSH keys locally and provide the login credentials in the <i>automate_sabr_clab.py</i> script.
+    b. Copy your SSH keys locally and provide the login credentials in the <i>automate_sabr_clab.py</i> script.
   
-  c. Replace the server and client lists with login information in <i>automate_sabr_clab.py</i>.
+    c. Replace the server and client lists with login information in <i>automate_sabr_clab.py</i>.
 
 ## C. Parsing - Collect and Analyze Results
 1. A sample BASH script,<i>getmultipleruns_BOLA.sh</i>, is provided to collect the results from the CloudLab client machines. This script retrieves results from 60 clients and saves them in different folders to be parsed. You will need to update it with login information of your CloudLab clients. For every algorithm, replace the default, BOLAO, with the name of the client algorithm.
-2. For parsing results and computing QoE metrics, average quality bitrate, number of quality switches, spectrum and rebuffering ratio, <i>matplotlib_clab.py</i> may be used. The script contains parsing logic for BOLAO and BOLAO with SABR. You will need to replace BOLAO with paths for other algorithm results.
+2. For parsing results and computing QoE metrics, average quality bitrate, number of quality switches, spectrum and rebuffering ratio, <i>matplotlib_clab.py</i>, may be used. The script contains parsing logic for BOLAO and BOLAO with SABR. You will need to replace BOLAO with paths for other algorithm results.
 3. Cache hit-rates can be computed using the script, <i>cdf_hitratio_qual.py</i>. The current example contains parsing script for BOLAO for the Quality-based caching case. You will need to replace this with other content placement result folders for the Global and Local caching cases.
-4. Total content requests per quality can be obtained using the script,<i>cdf_hitratio_qual.py</i> for BOLAO and SQUAD for the Quality-based caching case. You will need to replace this with other content placement result folders for the Global and Local caching cases.
+4. Total content requests per quality can be obtained using the script, <i>cdf_hitratio_qual.py</i>, for BOLAO and SQUAD for the Quality-based caching case. You will need to replace this with other content placement result folders for the Global and Local caching cases.
 ## D. MATLAB - plotting scripts
