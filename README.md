@@ -1,4 +1,4 @@
-# SABR
+# SDN-assisted Adaptive Bit Rate streaming (SABR)
 This repo contains all source code for implementing network assisted adaptive bitrate video streaming and evaluating the system in the CloudLab testbed
 
 ## About this system
