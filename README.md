@@ -44,7 +44,8 @@ This component has been tested on a server that runs Ubuntu 14.04 and has the fo
    c. Connect bridge to OpenFlow controller
    
    `sudo ovs-vsctl set-controller <bridge_name> tcp:<IP_of_controller>:<port_number>`
-[Note:] For more information on how to configure and work with OVS switches, go here.\footnotemark[4]
+   
+[Note]: For more information on how to configure and work with OVS switches, go here.\footnotemark[4]
 
 The script, \textit{automate\_sabr\_clab.py}, can be updated to remotely execute the above commands on switches if desired.
 2. Setup Server 
