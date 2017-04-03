@@ -53,11 +53,10 @@ The script, <i>automate_sabr_clab.py</i>, can be updated to remotely execute the
     * The following dependencies must be installed:
       * screen apache2 python-pip python-dev build-essential libssl-dev libffi-dev mongodb
       * Python libraries: pymongo scapy scapy_http netifaces
-
-[Hint]: Run the following script on the [server](https://github.com/dbhat/cloudlab_SABR/blob/master/server/server.sh)
+    [Hint]: Run the following script on the [server](https://github.com/dbhat/cloudlab_SABR/blob/master/server/server.sh)
+    
     * Insert metadata information into the cache MongoDB using [this script](https://github.com/dbhat/cloudlab_SABR/blob/master/server/create_mpdinfo.py). This script depends on mpd_insert.py and config_dash.py which can be found [here](https://github.com/dbhat/cloudlab_SABR/tree/master/server).
     * Use [this script](https://github.com/dbhat/cloudlab_SABR/blob/master/server/http_capture.py) to listen to http requests for caching. This script is used to sniff HTPP GET requests and works best inside a screen process by running 
-    
     `python http_capture.py`
 3. Setup Clients 
     * The following dependencies must be installed:
