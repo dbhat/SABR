@@ -1,9 +1,9 @@
 # SDN-assisted Adaptive Bit Rate streaming (SABR)
-This repo contains all source code for implementing network assisted adaptive bitrate video streaming and evaluating the system in the CloudLab testbed
+This repo contains all source code for implementing network assisted adaptive bitrate video streaming and evaluating the system in the CloudLab testbed.
 
 ## About this system
 This system has been tested and evaluated in [CloudLab](https://www.cloudlab.us/), a testbed for researchers to build and test clouds and new architectures.
-In order to experiment with CloudLab, you will need an account for access and a profile to instantiate. The profile is specified here as <i>cloudlab_topo.rspec</i>
+In order to experiment with CloudLab, you will need an account for access and a profile to instantiate. The profile is specified here as <i>cloudlab_topo.rspec</i>.
 
 The following subsystems are included:
 
@@ -53,7 +53,7 @@ The script, <i>automate_sabr_clab.py</i>, can be updated to remotely execute the
     * The following dependencies must be installed:
       * screen apache2 python-pip python-dev build-essential libssl-dev libffi-dev mongodb
       * Python libraries: pymongo scapy scapy_http netifaces
-    [Hint]: Run the following script on the [server](https://github.com/dbhat/cloudlab_SABR/blob/master/server/server.sh)
+    [Hint]: Run the following [script] (https://github.com/dbhat/cloudlab_SABR/blob/master/server/server.sh) on the server.
     
     * Insert metadata information into the cache MongoDB using [<i>create_mpdinfo.py</i>](https://github.com/dbhat/cloudlab_SABR/blob/master/server/create_mpdinfo.py). This script depends on [<i>mpd_insert.py</i>](https://github.com/dbhat/cloudlab_SABR/blob/master/server/mpd_insert.py) and [<i>config_dash.py</i>](https://github.com/dbhat/cloudlab_SABR/blob/master/server/config_dash.py).
     * Use [<i>http_capture.py</i>](https://github.com/dbhat/cloudlab_SABR/blob/master/server/http_capture.py) to listen to http requests for caching. This script is used to sniff HTTP GET requests and works best inside a screen process by running 
@@ -85,6 +85,6 @@ The script, <i>automate_sabr_clab.py</i>, can be updated to remotely execute the
 3. Cache hit-rates can be computed using the script, <i>cdf_hitratio_qual.py</i>. The current example contains parsing script for BOLAO for the Quality-based caching case. You will need to replace this with other content placement result folders for the Global and Local caching cases.
 4. Total content requests per quality can be obtained using the script, <i>cdf_hitratio_qual.py</i>, for BOLAO and SQUAD for the Quality-based caching case. You will need to replace this with other content placement result folders for the Global and Local caching cases.
 ## D. MATLAB - plotting scripts
-1. The script, <i>caching_CDF_SQUAD.m</i>, is used to plot CDF and CCDF curves for the 4 QoE metrics, Average Quality Bitrate, Number of quality switches, Spectrum and Rebuffering Ratio for all client algorithms. The same script is modified to generate results for the various content placement algorithms for Baseline, Local, Global and Quality-based caching.
+1. The script, <i>caching_CDF_SQUAD.m</i>, is used to plot CDF and CCDF graphs for the 4 QoE metrics, Average Quality Bitrate, Number of quality switches, Spectrum and Rebuffering Ratio for all client algorithms. The same script is modified to generate results for the various content placement algorithms for Baseline, Local, Global and Quality-based caching.
 2. The script, <i>stacked_requests.m</i>, is used to create a stacked bar graph for the total number of hits for the 5 quality representations for all content placement strategies.
 
