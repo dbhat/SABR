@@ -31,7 +31,22 @@ This component has been tested on a server that runs Ubuntu 14.04 and has the fo
 4. Run the caching component - For the initial setup of the empty caches, the command, `python cacher.py`, must be run only after the orchestration of the testbed experiments has started.
 
 ## B. Orchestration - Run experiments on CloudLab testbed.
-1. Setup Switches - Create OVS bridges and connect to the controller IP above. The script, <i>automate_sabr_clab.py</i>, can be updated to remotely execute on switches if desired.
+1. Setup Switches - Create OVS bridges on each of OVS switches, <i>sw1a</i>, <i>sw2a</i>, <i>sw2b</i>, <i>sw3a</i>, <i>sw3b</i>, <i>sw3c</i>, <i>sw3d</i>, <i>sw4a</i>, <i>sw4b</i>, <i>sw4c</i> and <i>sw4d</i> and connect them to the controller using the following commands as a reference:
+   
+   a. Create bridge
+   
+   `sudo ovs-vsctl add-br <bridge_name>`
+   
+   b. Add ports,i.e., interfaces to be controlled
+   
+   `sudo ovs-vsctl add-port <bridge_name> <port_name>`
+   
+   c. Connect bridge to OpenFlow controller
+   
+   `sudo ovs-vsctl set-controller <bridge_name> tcp:<IP_of_controller>:<port_number>`
+[Note:] For more information on how to configure and work with OVS switches, go here.\footnotemark[4]
+
+The script, \textit{automate\_sabr\_clab.py}, can be updated to remotely execute the above commands on switches if desired.
 2. Setup Server 
     * The following dependencies must be installed:
       * screen apache2 python-pip python-dev build-essential libssl-dev libffi-dev mongodb
