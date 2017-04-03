@@ -87,5 +87,6 @@ The script, <i>automate_sabr_clab.py</i>, can be updated to remotely execute the
 ## D. MATLAB - plotting scripts
 1. The script, <i>caching_CDF_SQUAD.m</i>, is used to plot CDF and CCDF graphs for the 4 QoE metrics, Average Quality Bitrate, Number of quality switches, Spectrum and Rebuffering Ratio for all client algorithms. The same script is modified to generate results for the various content placement algorithms for Baseline, Local, Global and Quality-based caching.
 2. The script, <i>stacked_requests.m</i>, is used to create a stacked bar graph for the total number of hits for the 5 quality representations for all content placement strategies.
+3. The script, <i>caching_hit_ratio.m</i>, is used to create a bar graph for the hit rate, i.e, (no. of requests served by caches)/(total number of requests) for the 5 quality representations for all content placement strategies.
 
 
