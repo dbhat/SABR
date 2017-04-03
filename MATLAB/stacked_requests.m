@@ -53,7 +53,4 @@ ylim([0,290000])
 set(gca,'fontsize',12)
 % Add a legend
 legend('Q_{1}', 'Q_{2}', 'Q_{3}', 'Q_{4}','Q_{5}','show','Location','northwest')
-%colormap(cool(8));
-%im_hatch = applyhatch_pluscolor(gcf,'+|-./',0,[0 0 0 0 0],[],200,3,2);
-%imwrite(im_hatch,'test.png','png')
 saveas(gcf, figname1, 'fig')
